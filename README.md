@@ -9,6 +9,7 @@ use firebase
 
 ```
 $ firebase login
+$ npm run build
 $ firebase deploy
 ```
 
@@ -16,3 +17,8 @@ $ firebase deploy
 
 App -> Settings -> MyApp -> Copy Firebase Config -> create `/src/firebase-config.js` and paste.
 
+## preview
+
+```
+$ npm start
+```
