@@ -49,7 +49,7 @@ class Home extends React.Component {
 
   addColor() {
     if (!this.state.color) {
-      this.setState({ errors: ['色を選択してください'] })
+      this.setState({ errors: ['You must select color'] })
       return
     }
 
@@ -65,8 +65,6 @@ class Home extends React.Component {
   }
 
   trashColor(selectedColor) {
-    console.log(selectedColor)
-    console.log((selectedColor.match(new RegExp("f", "g")) || []).length)
     return (selectedColor.match(new RegExp("f", "g")) || []).length >= 4 ? 'black' : 'white'
   }
 
