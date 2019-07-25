@@ -1,0 +1,26 @@
+.input {
+  border: 0;
+  width: 100%;
+  height: 30px;
+  font-size: 16px;
+  padding: 20px;
+  border: solid 1px $input-color;
+  border-radius: 10px;
+  box-shadow: none;
+  display: block;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+
+  &::placeholder {
+    color: $input-color;
+  }
+
+  &:focus {
+    border-color: $brand-color;
+  }
+}
+
+.input.-none {
+  display: none;
+}

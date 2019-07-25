@@ -1,0 +1,17 @@
+.color-box-list {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 10px 10px;
+}
+
+.color-box {
+  position: relative;
+  width: 100px;
+  height: 100px;
+
+  .color-box__trash {
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+  }
+}

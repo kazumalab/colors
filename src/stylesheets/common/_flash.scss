@@ -1,0 +1,16 @@
+.flash {
+  border: solid 1px $input-color;
+  font-size: 10px;
+  padding: 10px;
+  height: auto;
+  margin: 10px 0;
+
+  &.-error {
+    border: solid 1px $error;
+    color: $error;
+  }
+
+  .flash-text {
+    margin: 0px;
+  }
+}

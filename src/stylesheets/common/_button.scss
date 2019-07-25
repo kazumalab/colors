@@ -1,0 +1,18 @@
+.button {
+  border: none !important;
+  outline: none !important;
+  appearance: none !important;
+  background-color: $brand-color-gray;
+  width: 100%;
+  border-radius: 10px;
+  height: 40px;
+  color: $white;
+  font-weight: bold;
+  display: block;
+  text-decoration: none;
+  text-align: center;
+
+  &.-submit {
+    background-color: $submit-color;
+  }
+}
