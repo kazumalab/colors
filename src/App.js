@@ -1,30 +1,35 @@
 import React from 'react'
 import './App.css';
 import firebase from "./firebase-config"
+import { BrowserRouter, Route, Link } from 'react-router-dom'
+import Header from './components/Header'
+import Footer from './components/Footer'
+import Home from './Home';
 
 class App extends React.Component {
   constructor(props) {
     super(props)
 
     this.state = {
-      user: null
+      user: null,
+      db: firebase.firestore()
     }
+
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) this.setState({ user })
+    })
   }
 
   render() {
-    return(
-      <div>
-        <h1>Hello! Colors.</h1>
-        { !this.isLogin && <button onClick={this.login}>Login</button> }
-        { this.isLogin && <p>{this.state.user.email}</p> }
-      </div>
+    return (
+      <BrowserRouter>
+        <div>
+          <Header user={this.state.user} isLogin={this.isLogin} login={this.login} />
+          <Route path='/' component={() => <Home user={this.state.user} />} />
+          <Footer />
+        </div>
+      </BrowserRouter>
     )
-  }
-
-  componentDidMount() {
-    firebase.auth().onAuthStateChanged((user) => {
-      this.setState({ user })
-    })
   }
 
   get isLogin() {
