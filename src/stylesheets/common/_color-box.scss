@@ -2,14 +2,23 @@
   display: flex;
   flex-wrap: wrap;
   margin: 10px 10px;
+  justify-content: right;
 }
 
 .color-box {
   position: relative;
-  width: 100px;
+  width: 30%;
   height: 100px;
+  box-shadow: 1px;
+  box-shadow:4px 7px 2px -3px $input-color;
+  margin: 5px;
 
   .color-box__trash {
+    border: none !important;
+    outline: none !important;
+    appearance: none !important;
+    background-color: rgba($color: $white, $alpha: 0);
+    padding: 10px;
     position: absolute;
     bottom: 0px;
     right: 0px;

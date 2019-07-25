@@ -24,3 +24,19 @@
 .input.-none {
   display: none;
 }
+
+.select-color {
+  margin: 10px 0;
+  position: relative;
+  display: block;
+  width: 100%;
+  background-color: $black;
+  border-radius: 10px;
+  text-align: center;
+  padding: 10px 0;
+
+  .select-color__input {
+    position: absolute;
+    opacity: 0;
+  }
+}

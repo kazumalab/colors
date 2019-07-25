@@ -1,6 +1,6 @@
 import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTrash } from '@fortawesome/free-solid-svg-icons'
+import { faTrash, faPalette } from '@fortawesome/free-solid-svg-icons'
 import "./stylesheets/common.scss"
 import "./stylesheets/color-form.scss"
 
@@ -22,10 +22,11 @@ class Home extends React.Component {
   render() {
     const colorElements =
       <div className="color-box-list">
+        { this.state.colors.length === 0 && <p>do not selected.</p> }
         {
           this.state.colors.map((value, index) =>
-            <div className="color-box" style={{ backgroundColor: value }} key={index}>
-              <button className="color-box__trash" onClick={() => this.removeColor(index)}><FontAwesomeIcon icon={faTrash} size="2x" color={this.trashColor(value)}></FontAwesomeIcon></button>
+            <div className="color-box" style={{ backgroundColor: value, borderColor: this.reverseColor(value) }} key={index}>
+              <button className="color-box__trash" onClick={() => this.removeColor(index)}><FontAwesomeIcon icon={faTrash} size="2x" color={this.reverseColor(value)}></FontAwesomeIcon></button>
             </div>
           )
         }
@@ -36,8 +37,11 @@ class Home extends React.Component {
         <label>Color's Themes</label>
         { this.errorMessages }
         <input type="text" placeholder="Theme" className="input" />
-        <input type="color" onChange={this.setColor} />
         { colorElements }
+        <label className="select-color" style={{ backgroundColor: this.state.color }}>
+          <FontAwesomeIcon icon={faPalette} color={this.reverseColor(this.state.color)} />
+          <input type="color" className="select-color__input" onChange={this.setColor} />
+        </label>
         <button onClick={this.addColor} className="button">Add</button>
       </div>
     )
@@ -64,7 +68,9 @@ class Home extends React.Component {
     this.setState({ colors: colors })
   }
 
-  trashColor(selectedColor) {
+  reverseColor(selectedColor) {
+    if (!selectedColor) return 'white'
+
     return (selectedColor.match(new RegExp("f", "g")) || []).length >= 4 ? 'black' : 'white'
   }
 
